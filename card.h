@@ -4,17 +4,16 @@
 
 class Card
 {
-
-    private:
-        int value;
-        char suit;
-
-    public:
-        Card(char s, int v);
-        ~Card();
-        char getSuit();
-        int getValue();
-
+private:
+	int value;
+	char suit;
+public:
+	Card();
+	Card(char s, int v);
+	~Card();
+	char getSuit();
+	int getValue();
+	void printCard();
 };
 
 #endif

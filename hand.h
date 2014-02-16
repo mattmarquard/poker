@@ -7,15 +7,26 @@
 
 class Hand
 {
-    private:
-        int currentCards;
-        Card *cards[NUMCARDS];
-    public:
-        Hand();
-        ~Hand();
-        int getScore();
-        int addCard(Card *s);
-        int getCC();
+private:
+	int currentCards;
+	int score;
+	int highcard;
+	bool flush;
+	int pair;
+	int secondPair;
+	int three;
+	int four;
+	int house;
+	Card *cards[NUMCARDS];
+	void handlePairs(int v);
+	bool isStraight();
+public:
+	Hand();
+	~Hand();
+	int getScore();
+	int addCard(Card *s);
+	void printHand();
+	int getCC();
 };
 
 #endif

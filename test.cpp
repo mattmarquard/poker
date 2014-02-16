@@ -1,31 +1,37 @@
 #include <iostream>
 #include "card.h"
 #include "hand.h"
+#include "deck.h"
+
+#define NUMHANDS 5
 using namespace std;
 
 int main()
 {
-    Hand h = Hand();
-    Card myCard = Card('h', 5);
-    Card myCard2 = Card('s', 10);
-    Card myCard3 = Card('c', 3);
-    Card myCard4 = Card('d', 2);
-    Card myCard5 = Card('h', 4);
-    
-    int i;
+	Hand h = Hand();
+	Hand h2 = Hand();
+	Hand h3 = Hand();
+	Hand h4 = Hand();
+	Hand h5 = Hand();
 
-    i = h.addCard(&myCard5);
-    cout << "AddCard worked if this isnt -1: " << i << endl;
-    i = h.addCard(&myCard);
-    i = h.addCard(&myCard2);
-    i = h.addCard(&myCard3);
-    i = h.addCard(&myCard4);
-    i = h.addCard(&myCard);
+	Hand hands[]= { h, h2, h3, h4, h5 };
+	
 
-    cout << "The char is : " << myCard.getSuit() << endl;
-    cout << "The value is : " << myCard.getValue() << endl;
-    cout << "The currentCard value is: " << h.getCC() << endl;
-    cout << "AddCard worked if this isnt -1: " << i << endl;
+	PokerDeck myDeck = PokerDeck();
 
-    return 0;
+	myDeck.printDeck();
+	myDeck.shuffle();
+	cout << endl;
+	cout << endl;
+	myDeck.printDeck();
+
+	myDeck.deal(hands, NUMHANDS);
+	for (int i = 0; i < NUMHANDS; i++) {
+		cout << "Hand number " << i + 1 << " is:" << endl;
+		hands[i].printHand();
+	}
+
+	cin.get();
+
+	return 0;
 }

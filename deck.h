@@ -15,7 +15,7 @@ public:
 	PokerDeck();
 	~PokerDeck();
 	void shuffle();
-	void deal(Hand hands[], int numHands);
+	void deal(Hand* hands[], int numHands);
 	void printDeck();
 };
 

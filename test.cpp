@@ -8,6 +8,7 @@
 #define NUMHANDS 10
 using namespace std;
 
+//custom sort function for std::sort for vectors to handle Hands
 bool sortByScore(Hand *h1, Hand *h2) {
 	int h1Score = h1->getScore();
 	int h2Score = h2->getScore();

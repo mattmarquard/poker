@@ -27,6 +27,7 @@ PokerDeck::PokerDeck() {
 PokerDeck::~PokerDeck() {
 }
 
+//shuffle cards using a vector
 void PokerDeck::shuffle() {
 	shuffledCards.erase(shuffledCards.begin(), shuffledCards.end());
 	int min = 1;
@@ -34,27 +35,30 @@ void PokerDeck::shuffle() {
 	Card tmp;
 	int i;
 	for (i = 51; i >= 0; i--) {
-		int x = min + (rand() % (int)(max - min + 1)) - 1;
+		int x = (rand() % (int)(max - min + 1));
 		tmp = cards[x];
 		cards[x] = cards[i];
 		cards[i] = tmp;
 		Card *p = &cards[i];
 		shuffledCards.push_back(p);
+		max--;
 	}
 }
 
-void PokerDeck::deal(Hand hands[], int numHands){
+//deal hands based on number of hands
+void PokerDeck::deal(Hand* hands[], int numHands){
 	int maxcards = 5;
 	int i, j;
 	for (i = 0; i < maxcards; i++) {
 		for (j = 0; j < numHands; j++) {
 			Card *p = shuffledCards.back();
-			hands[j].addCard(p);
+			hands[j]->addCard(p);
 			shuffledCards.pop_back();
 		}
 	}
 }
 
+//printdekc
 void PokerDeck::printDeck() {
 	for (int i = 0; i < NUMINDECK; i++) {
 		cards[i].printCard();

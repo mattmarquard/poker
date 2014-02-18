@@ -13,6 +13,7 @@ public:
 	~Card();
 	char getSuit();
 	int getValue();
+	void setValue(int i);
 	void printCard();
 };
 
